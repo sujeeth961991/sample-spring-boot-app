@@ -39,17 +39,8 @@ stages:
           $(tag)
     - task: HelmInstaller@0
       inputs:
-        helmVersion: '3.0.0'
+        helmVersion: '3.3.0'
         installKubectl: true
-    - task: HelmDeploy@0
-      inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscription: 'Azure subscription 1(14ab4a7a-454d-4c1c-a9d3-eaf6bc4511d8)'
-        azureResourceGroup: 'delphi'
-        kubernetesCluster: 'delphiaks'
-        useClusterAdmin: true
-        namespace: 'kube-system'
-        command: 'init'
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Azure Resource Manager'
