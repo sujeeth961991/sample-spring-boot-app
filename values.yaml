@@ -5,8 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: delphiacr.azurecr.io/sujeethsamplespringbootapp:19
-  tag: stable
+  repository: delphiacr.azurecr.io/sujeethsamplespringbootapp
   pullPolicy: IfNotPresent
 
 service:
