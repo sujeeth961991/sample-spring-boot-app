@@ -53,7 +53,7 @@ stages:
         chartType: 'FilePath'
         chartPath: '$(Build.SourcesDirectory)/delphichart'
         releaseName: 'delphirelease'
-        overrideValues: 'image.repository=delphiacr.azurecr.io/sujeethsamplespringbootapp:$(tag)'
+        overrideValues: 'image.tag=$(tag)'
         valueFile: '$(Build.SourcesDirectory)/values.yaml'
         arguments: '--debug'
     
