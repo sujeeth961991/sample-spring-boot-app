@@ -55,4 +55,5 @@ stages:
         releaseName: 'delphirelease'
         overrideValues: 'image.repository=delphiacr.azurecr.io/sujeethsamplespringbootapp:$(tag)'
         valueFile: '$(Build.SourcesDirectory)/values.yaml'
+        arguments: '--debug'
     
