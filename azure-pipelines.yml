@@ -36,3 +36,18 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+
+    - task: HelmDeploy@0
+      inputs:
+        connectionType: 'Azure Resource Manager'
+        azureSubscription: 'Azure subscription 1(14ab4a7a-454d-4c1c-a9d3-eaf6bc4511d8)'
+        azureResourceGroup: 'delphi'
+        kubernetesCluster: 'delphiaks'
+        useClusterAdmin: true
+        namespace: 'delphi'
+        command: 'upgrade'
+        chartType: 'FilePath'
+        chartPath: './delphichart'
+        releaseName: 'delphirelease'
+        overrideValues: 'image.repository=delphiacr.azurecr.io/sujeethsamplespringbootapp:$(tag)'
+        valueFile: './values.yaml'
