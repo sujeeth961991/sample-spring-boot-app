@@ -37,23 +37,3 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-    - task: HelmInstaller@0
-      inputs:
-        helmVersion: '3.3.0'
-        installKubectl: true
-    - task: HelmDeploy@0
-      inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscription: 'Azure subscription 1(14ab4a7a-454d-4c1c-a9d3-eaf6bc4511d8)'
-        azureResourceGroup: 'delphi'
-        kubernetesCluster: 'delphiaks'
-        useClusterAdmin: true
-        namespace: 'delphi'
-        command: 'upgrade'
-        chartType: 'FilePath'
-        chartPath: '$(Build.SourcesDirectory)/delphichart'
-        releaseName: 'delphirelease'
-        overrideValues: 'image.tag=$(tag)'
-        valueFile: '$(Build.SourcesDirectory)/values.yaml'
-        arguments: '--debug'
-    
