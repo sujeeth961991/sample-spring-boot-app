@@ -6,8 +6,8 @@ RUN mvn package -Dmaven.test.skip=true
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 
-FROM openjdk:8-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
+FROM openjdk:11.0.8-jdk
+RUN addgroup --system spring && adduser --system spring --ingroup spring
 USER spring:spring
 ARG DEPENDENCY=/app/target/dependency
 COPY --from=BUILDER ${DEPENDENCY}/BOOT-INF/lib /app/lib
